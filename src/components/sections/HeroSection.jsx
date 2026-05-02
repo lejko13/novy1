@@ -71,10 +71,12 @@ export default function HeroSection() {
     lineHeight: 0.9,
   }}
 >
-  <span className="block">TVOJA</span>
-  <span className="block" style={{ color: 'var(--electric-blue)' }}>
+  <span className="block">
+  TVOJA <span style={{ color: 'var(--electric-blue)' }}>CESTA</span>
+</span>
+  {/* <span className="block" style={{ color: 'var(--electric-blue)' }}>
     CESTA
-  </span>
+  </span> */}
   <span className="block">K VÝKONU</span>
 </motion.h1>
 

@@ -3,7 +3,7 @@ import HeroSection from '../components/sections/HeroSection';
 import TickerSection from '../components/sections/TickerSection';
 import HowItWorksSection from '../components/sections/HowItWorksSection';
 import WhyUsSection from '../components/sections/WhyUsSection';
-import BranchesSection from '../components/sections/BranchesSection';
+// import BranchesSection from '../components/sections/BranchesSection';
 import GymsCardsSection from '../components/sections/GymsCardsSection';
 import PricingSection from '../components/sections/PricingSection';
 import TrainersSection from '../components/sections/TrainersSection';
@@ -19,7 +19,7 @@ export default function Home() {
       <TickerSection />
       <HowItWorksSection />
       <WhyUsSection />
-      <BranchesSection />
+      {/* <BranchesSection /> */}
       <GymsCardsSection />
       <PricingSection />
       <TrainersSection />
