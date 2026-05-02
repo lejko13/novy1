@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { gyms } from '../../lib/gymData';
-import { useTheme } from '../../lib/ThemeContext';
 
 const navItems = [
   { label: 'Domov', href: '#domov' },
@@ -21,7 +20,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const { theme, toggle } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
   const isHome = location.pathname === '/';
@@ -125,22 +123,8 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* CTA + Theme Toggle + Hamburger */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={toggle}
-              aria-label="Toggle theme"
-              className="p-2 rounded-lg border transition-all duration-300 hover:scale-110"
-              style={{
-                border: 'rgba(255,255,255,0.1)',
-                borderStyle: 'solid',
-                borderWidth: '1px',
-                color: 'var(--steel)',
-                background: 'transparent',
-              }}
-            >
-              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
+          {/* CTA + Hamburger */}
+          <div className="flex items-center gap-4">
             <a
               href="https://gymify.sk/gyms/cvic-sam/booking"
               target="_blank"
