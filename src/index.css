@@ -5,7 +5,8 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  :root,
+  [data-theme="dark"] {
     --background: 0 0% 2.7%;
     --foreground: 0 0% 100%;
     --card: 0 0% 7.1%;
@@ -35,6 +36,34 @@
     --font-display: 'Inter Tight', sans-serif;
     --font-body: 'Inter', sans-serif;
   }
+
+  [data-theme="light"] {
+    --background: 0 0% 97%;
+    --foreground: 0 0% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+    --primary: 213 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 93%;
+    --secondary-foreground: 0 0% 8%;
+    --muted: 0 0% 93%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 213 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 85%;
+    --input: 0 0% 85%;
+    --ring: 213 100% 50%;
+
+    --obsidian: #f5f5f5;
+    --asphalt: #ffffff;
+    --electric-blue: #1a7fe8;
+    --cyan-glow: #0099cc;
+    --steel: #555555;
+  }
 }
 
 @layer base {
@@ -51,6 +80,11 @@
     font-family: var(--font-body);
     background-color: var(--obsidian);
     overflow-x: hidden;
+  }
+
+  [data-theme="light"] body,
+  [data-theme="light"] {
+    color: #1a1a1a;
   }
 
   ::selection {
@@ -96,6 +130,47 @@
     background: rgba(18, 18, 18, 0.7);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+  }
+
+  [data-theme="light"] .glass-morph {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  [data-theme="light"] .nav-link {
+    color: #444444;
+  }
+
+  [data-theme="light"] .nav-link:hover {
+    color: #111111;
+  }
+
+  [data-theme="light"] .btn-outline {
+    color: #1a1a1a;
+    border-color: rgba(0,0,0,0.2);
+  }
+
+  [data-theme="light"] .btn-outline:hover {
+    border-color: var(--electric-blue);
+    color: var(--electric-blue);
+  }
+
+  [data-theme="light"] .motion-line {
+    background: linear-gradient(90deg, transparent, rgba(26,127,232,0.5), transparent);
+  }
+
+  [data-theme="light"] .input-underline {
+    color: #1a1a1a;
+    border-bottom-color: rgba(0,0,0,0.2);
+  }
+
+  [data-theme="light"] .input-underline::placeholder {
+    color: #888888;
+  }
+
+  [data-theme="light"] .display-heading {
+    color: #0a0a0a;
   }
 
   .nav-link {
