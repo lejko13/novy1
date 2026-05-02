@@ -4,6 +4,7 @@ import TickerSection from '../components/sections/TickerSection';
 import HowItWorksSection from '../components/sections/HowItWorksSection';
 import WhyUsSection from '../components/sections/WhyUsSection';
 import BranchesSection from '../components/sections/BranchesSection';
+import GymsCardsSection from '../components/sections/GymsCardsSection';
 import PricingSection from '../components/sections/PricingSection';
 import TrainersSection from '../components/sections/TrainersSection';
 import FAQSection from '../components/sections/FAQSection';
@@ -19,6 +20,7 @@ export default function Home() {
       <HowItWorksSection />
       <WhyUsSection />
       <BranchesSection />
+      <GymsCardsSection />
       <PricingSection />
       <TrainersSection />
       <FAQSection />

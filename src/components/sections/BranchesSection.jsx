@@ -1,45 +1,8 @@
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { MapPin, ExternalLink, Clock } from 'lucide-react';
-
-const branches = [
-  {
-    id: 'martina-beku',
-    name: 'Martina Beku',
-    fullName: 'Cvič Sám – Martina Beku',
-    address: 'Martina Benku 7887/1A, 080 01 Prešov',
-    tag: 'Hlavná prevádzka',
-    hours: '24/7 cez aplikáciu',
-    bookingUrl: 'https://gymify.sk/gyms/cvic-sam/booking',
-    mapsUrl: 'https://maps.google.com/?q=Martina+Benku+7887/1A+Presov',
-    color: '#4A9EFF',
-    bgImage: 'https://cvicsam.sk/wp-content/uploads/2025/11/foto_fitko-002-scaled.jpg',
-  },
-  {
-    id: 'svaby',
-    name: 'Šváby',
-    fullName: 'Cvič Sám – Šváby',
-    address: 'Švábska 41/A, 080 05 Prešov',
-    tag: 'Druhá prevádzka',
-    hours: '24/7 cez aplikáciu',
-    bookingUrl: 'https://gymify.sk/gyms/cvic-sam-svaby/booking?reservable=238',
-    mapsUrl: 'https://maps.google.com/?q=Svabska+41/A+Presov',
-    color: '#00D1FF',
-    bgImage: 'https://cvicsam.sk/wp-content/uploads/2025/11/foto_fitko-004-scaled.jpg',
-  },
-  {
-    id: 'hronskaKE',
-    name: 'Hronská KE',
-    fullName: 'Cvič Sám – Hronská KE',
-    address: 'Hronská, Košice',
-    tag: 'Košice',
-    hours: '24/7 cez aplikáciu',
-    bookingUrl: 'https://gymify.sk/gyms/cvic-sam/booking',
-    mapsUrl: 'https://maps.google.com/?q=Hronskaul+Kosice',
-    color: '#4A9EFF',
-    bgImage: 'https://cvicsam.sk/wp-content/uploads/2025/11/foto_fitko-007-scaled.jpg',
-  },
-];
+import { MapPin, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { gyms as branches } from '../../lib/gymData';
 
 export default function BranchesSection() {
   const [hovered, setHovered] = useState(null);
@@ -145,7 +108,7 @@ export default function BranchesSection() {
                     <p className="text-sm" style={{ color: 'var(--steel)' }}>{branch.hours}</p>
                   </div>
 
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 flex-wrap">
                     <a
                       href={branch.bookingUrl}
                       target="_blank"
@@ -155,15 +118,13 @@ export default function BranchesSection() {
                     >
                       Rezervovať
                     </a>
-                    <a
-                      href={branch.mapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      to={`/gym/${branch.slug}`}
                       className="btn-outline text-xs py-2.5 px-4 flex items-center gap-1.5"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <MapPin size={13} /> Mapa
-                    </a>
+                      Detail
+                    </Link>
                   </div>
                 </motion.div>
               </div>
@@ -199,9 +160,9 @@ export default function BranchesSection() {
               <a href={branch.bookingUrl} target="_blank" rel="noopener noreferrer" className="btn-primary text-xs py-2 px-4">
                 Rezervovať
               </a>
-              <a href={branch.mapsUrl} target="_blank" rel="noopener noreferrer" className="btn-outline text-xs py-2 px-4">
-                Mapa
-              </a>
+              <Link to={`/gym/${branch.slug}`} className="btn-outline text-xs py-2 px-4">
+                Detail
+              </Link>
             </div>
           </div>
         ))}

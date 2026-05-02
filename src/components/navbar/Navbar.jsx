@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { gyms } from '../../lib/gymData';
 
 const navItems = [
   { label: 'Domov', href: '#domov' },
   { label: 'Ako to funguje', href: '#ako-to-funguje' },
-  { label: 'Naše pobočky', href: '#pobocky' },
   {
-    label: 'Tréneri', href: '#treneri',
-    dropdown: [
-      { label: 'Michaela', href: '#treneri' },
-      { label: 'Všetci tréneri', href: '#treneri' },
-    ]
+    label: 'Naše posilňovne',
+    href: '#pobocky',
+    dropdown: gyms.map((g) => ({ label: g.fullName, href: `/gym/${g.slug}`, isRoute: true })),
   },
   { label: 'FAQ', href: '#faq' },
   { label: 'Kontakt', href: '#kontakt' },
@@ -21,6 +20,9 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -28,11 +30,23 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (href) => {
+  const handleNavClick = (href, isRoute = false) => {
     setMobileOpen(false);
     setDropdownOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (isRoute) {
+      navigate(href);
+      return;
+    }
+    if (!isHome) {
+      navigate('/');
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -49,13 +63,13 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <a href="#domov" onClick={() => handleNavClick('#domov')} className="flex-shrink-0">
+          <Link to="/" className="flex-shrink-0">
             <img
               src="https://media.base44.com/images/public/user_69dcd0ab7f89db2e942fbb31/58cd524ad_civim-logo-modra.png"
               alt="Cvič Sám"
               className="h-9 w-auto"
             />
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
@@ -64,29 +78,29 @@ export default function Navbar() {
                 <div key={item.label} className="relative">
                   <button
                     className="nav-link flex items-center gap-1"
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                    onClick={() => setDropdownOpen(dropdownOpen === item.label ? false : item.label)}
                     onBlur={() => setTimeout(() => setDropdownOpen(false), 150)}
                   >
                     {item.label}
                     <ChevronDown
                       size={12}
-                      className={`transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}
+                      className={`transition-transform duration-200 ${dropdownOpen === item.label ? 'rotate-180' : ''}`}
                       style={{ color: 'var(--steel)' }}
                     />
                   </button>
                   <AnimatePresence>
-                    {dropdownOpen && (
+                    {dropdownOpen === item.label && (
                       <motion.div
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 8 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-3 glass-morph border border-white/10 rounded-lg overflow-hidden min-w-[160px]"
+                        className="absolute top-full left-0 mt-3 glass-morph border border-white/10 rounded-lg overflow-hidden min-w-[220px]"
                       >
                         {item.dropdown.map((sub) => (
                           <button
                             key={sub.label}
-                            onClick={() => handleNavClick(sub.href)}
+                            onClick={() => handleNavClick(sub.href, sub.isRoute)}
                             className="block w-full text-left px-4 py-3 text-sm font-medium text-white/70 hover:text-white hover:bg-white/5 transition-colors uppercase tracking-widest text-xs"
                             style={{ fontFamily: 'var(--font-display)' }}
                           >
@@ -142,23 +156,35 @@ export default function Navbar() {
             className="fixed inset-0 z-40 flex flex-col"
             style={{ background: 'rgba(7,7,7,0.98)', backdropFilter: 'blur(20px)' }}
           >
-            <div className="flex-1 flex flex-col justify-center px-8 gap-2">
+            <div className="flex-1 flex flex-col justify-center px-8 gap-2 overflow-y-auto py-24">
               {navItems.map((item, i) => (
-                <motion.button
-                  key={item.label}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.07 + 0.1 }}
-                  onClick={() => handleNavClick(item.href)}
-                  className="text-left py-4 border-b border-white/5 group"
-                >
-                  <span
-                    className="text-2xl font-black text-white group-hover:text-electric transition-colors"
-                    style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.03em', color: 'inherit' }}
+                <motion.div key={item.label} initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.07 + 0.1 }}>
+                  <button
+                    onClick={() => handleNavClick(item.href)}
+                    className="text-left w-full py-4 border-b border-white/5 group"
                   >
-                    {item.label}
-                  </span>
-                </motion.button>
+                    <span
+                      className="text-2xl font-black text-white group-hover:text-electric transition-colors"
+                      style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.03em' }}
+                    >
+                      {item.label}
+                    </span>
+                  </button>
+                  {item.dropdown && (
+                    <div className="pl-4 pb-2 space-y-1">
+                      {item.dropdown.map((sub) => (
+                        <button
+                          key={sub.label}
+                          onClick={() => handleNavClick(sub.href, sub.isRoute)}
+                          className="block w-full text-left py-2 text-sm"
+                          style={{ color: 'var(--steel)', fontFamily: 'var(--font-display)' }}
+                        >
+                          {sub.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
               ))}
               <motion.a
                 initial={{ opacity: 0 }}
