@@ -39,8 +39,7 @@ export default function HeroSection() {
       </div>
 
       <div className="absolute right-0 top-0 bottom-0 w-1/2 lg:w-2/5 z-0 hidden md:block">
-        <img
-          src="/public/pozadie.jpg"
+      <img src="/pozadie.jpg" 
           alt="Tréner Cvič Sám"
           className="w-full h-full object-cover object-center"
           style={{ filter: 'brightness(0.5) contrast(1.2)' }}
