@@ -19,17 +19,27 @@ export default function BranchesSection() {
       <div className="motion-line absolute top-0 left-0 right-0" />
 
       <div className="max-w-7xl mx-auto px-6 mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="section-label block mb-4">Lokácie</span>
-          <h2 className="display-heading" style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)' }}>
-            NAŠE<br />
-            <span style={{ color: 'var(--electric-blue)' }}>POBOČKY</span>
-          </h2>
-        </motion.div>
+       <motion.div
+  initial={{ opacity: 0, y: 30 }}
+  animate={inView ? { opacity: 1, y: 0 } : {}}
+  transition={{ duration: 0.6 }}
+>
+  <span className="section-label block mb-4">Lokácie</span>
+
+  <h2
+    className="display-heading"
+    style={{
+      fontSize: 'clamp(2.5rem, 5vw, 5rem)',
+      lineHeight: 0.95,
+      letterSpacing: '-0.03em',
+    }}
+  >
+    NAŠE<br />
+    <span style={{ color: 'var(--electric-blue)' }}>
+      POBOČKY
+    </span>
+  </h2>
+</motion.div>
       </div>
 
       {/* Blade layout */}
