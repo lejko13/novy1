@@ -19,7 +19,11 @@ export default function Home() {
       <TickerSection />
       <HowItWorksSection />
       <WhyUsSection />
+<<<<<<< HEAD
       {/* <BranchesSection /> */}
+=======
+      <BranchesSection />
+>>>>>>> d929236306f2b4bc40d0b7713dc45852b5980402
       <GymsCardsSection />
       <PricingSection />
       <TrainersSection />

@@ -42,7 +42,11 @@ export default function HeroSection() {
       {/* Trainer image right side */}
       <div className="absolute right-0 top-0 bottom-0 w-1/2 lg:w-2/5 z-0 hidden md:block">
         <img
+<<<<<<< HEAD
        src='../../../src/public/pozadie.jpg'
+=======
+          src="https://media.base44.com/images/public/user_69dcd0ab7f89db2e942fbb31/9609b38fb_trener.jpg"
+>>>>>>> d929236306f2b4bc40d0b7713dc45852b5980402
           alt="Tréner Cvič Sám"
           className="w-full h-full object-cover object-center"
           style={{ filter: 'brightness(0.5) contrast(1.2)' }}

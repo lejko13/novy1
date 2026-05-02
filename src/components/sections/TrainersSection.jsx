@@ -21,6 +21,7 @@ const trainers = [
     email: 'mailto:michell.onlinecoach@gmail.com',
     image: 'https://media.base44.com/images/public/user_69dcd0ab7f89db2e942fbb31/9609b38fb_trener.jpg',
   },
+<<<<<<< HEAD
   // {
   //   name: 'Tréner 2',
   //   role: 'Osobný tréner',
@@ -32,6 +33,19 @@ const trainers = [
   //   email: 'mailto:cvicsamgym@gmail.com',
   //   image: null,
   // },
+=======
+  {
+    name: 'Tréner 2',
+    role: 'Osobný tréner',
+    bio: 'Informácie o trénerovi budú doplnené čoskoro. Kontaktujte nás pre viac informácií o dostupnosti trénerov.',
+    motto: '"Každý tréning je krok vpred."',
+    specializations: ['Silový tréning', 'Kondičná príprava', 'Výživa a regenerácia', 'Funkčný tréning'],
+    instagram: '#',
+    instagramHandle: '@cvic_sam',
+    email: 'mailto:cvicsamgym@gmail.com',
+    image: null,
+  },
+>>>>>>> d929236306f2b4bc40d0b7713dc45852b5980402
 ];
 
 export default function TrainersSection() {
@@ -74,7 +88,11 @@ export default function TrainersSection() {
           </h2>
         </motion.div>
 
+<<<<<<< HEAD
         <div className="grid lg:grid-cols-1 gap-8">
+=======
+        <div className="grid lg:grid-cols-2 gap-8">
+>>>>>>> d929236306f2b4bc40d0b7713dc45852b5980402
           {trainers.map((trainer, i) => (
             <motion.div
               key={trainer.name}

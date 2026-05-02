@@ -84,7 +84,11 @@
 
   [data-theme="light"] body,
   [data-theme="light"] {
+<<<<<<< HEAD
     color: #ffffff;
+=======
+    color: #1a1a1a;
+>>>>>>> d929236306f2b4bc40d0b7713dc45852b5980402
   }
 
   ::selection {

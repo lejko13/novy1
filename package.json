@@ -12,6 +12,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "@base44/sdk": "^0.8.27",
+    "@base44/vite-plugin": "^1.0.13",
+>>>>>>> d929236306f2b4bc40d0b7713dc45852b5980402
     "@hello-pangea/dnd": "^17.0.0",
     "@hookform/resolvers": "^4.1.2",
     "@radix-ui/react-accordion": "^1.2.3",
@@ -93,6 +98,10 @@
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.2",
+<<<<<<< HEAD
     "vite": "^6.4.2"
+=======
+    "vite": "^6.1.0"
+>>>>>>> d929236306f2b4bc40d0b7713dc45852b5980402
   }
 }
